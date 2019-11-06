@@ -1,0 +1,24 @@
+int main()
+{
+  int F = 0, N = 0;
+  float T = 0.0;
+  printf("Please enter the frequency, length and the deltaTime: ");
+  scanf("%d %d %f", &F, &N, &T);
+
+  int i;
+  complex s[N];
+  float r;
+  for(i = 0; i < N; i++)
+  {
+    s[i].real = sin(2*PI*50*i*T);   //50Hz�����źţ��������ΪT
+    s[i].imag = 0;
+  }
+  fft(N, s);
+  for(i = 0; i < N; i++)
+  {
+    r=sqrt(s[i].real*s[i].real+s[i].imag*s[i].imag);
+		printf("s[%d].real=%f,imag=%f,r=%f\n",i,s[i].real,s[i].imag,r); 
+  }
+  system("pause");
+  return 0;
+}
